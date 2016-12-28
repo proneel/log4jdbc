@@ -857,6 +857,79 @@ public class ConnectionSpy implements Connection, Spy
     }
   }
 
+  public String getSchema() throws SQLException
+  {
+    String methodCall = "getSchema()";
+    try
+    {
+      return (String) reportReturn(methodCall, realConnection.getSchema());
+    }
+    catch (SQLException s)
+    {
+      reportException(methodCall, s);
+      throw s;
+    }
+  }
+
+  public void setSchema(String schema) throws SQLException
+  {
+    String methodCall = "setSchema(" + schema + ")";
+    try
+    {
+      realConnection.setSchema(schema);
+    }
+    catch (SQLException s)
+    {
+      reportException(methodCall, s);
+      throw s;
+    }
+    reportReturn(methodCall);
+  }
+
+  public int getNetworkTimeout() throws SQLException
+  {
+    String methodCall = "getNetworkTimeout()";
+    try
+    {
+      return reportReturn(methodCall, realConnection.getNetworkTimeout());
+    }
+    catch (SQLException s)
+    {
+      reportException(methodCall, s);
+      throw s;
+    }
+  }
+
+  public void setNetworkTimeout(java.util.concurrent.Executor executor, int milliseconds) throws SQLException
+  {
+    String methodCall = "setNetworkTimeout(" + milliseconds + ")";
+    try
+    {
+      realConnection.setNetworkTimeout(executor, milliseconds);
+    }
+    catch (SQLException s)
+    {
+      reportException(methodCall, s);
+      throw s;
+    }
+    reportReturn(methodCall);
+  }
+
+  public void abort(java.util.concurrent.Executor executor) throws SQLException
+  {
+    String methodCall = "abort()";
+    try
+    {
+      realConnection.abort(executor);
+    }
+    catch (SQLException s)
+    {
+      reportException(methodCall, s);
+      throw s;
+    }
+    reportReturn(methodCall);
+  }
+
   public void commit() throws SQLException
   {
     String methodCall = "commit()";

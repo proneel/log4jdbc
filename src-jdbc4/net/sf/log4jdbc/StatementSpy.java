@@ -817,6 +817,33 @@ public class StatementSpy implements Statement, Spy
     }
   }
 
+  public void closeOnCompletion() throws SQLException {
+    String methodCall = "closeOnCompletion()";
+    try
+    {
+      realStatement.closeOnCompletion();
+    }
+    catch (SQLException s)
+    {
+      reportException(methodCall, s);
+      throw s;
+    }
+    reportReturn(methodCall);
+  }
+
+  public boolean isCloseOnCompletion() throws SQLException {
+    String methodCall = "isCloseOnCompletion()";
+    try
+    {
+      return reportReturn(methodCall, realStatement.isCloseOnCompletion());
+    }
+    catch (SQLException s)
+    {
+      reportException(methodCall, s);
+      throw s;
+    }
+  }
+
   public void setMaxFieldSize(int max) throws SQLException
   {
     String methodCall = "setMaxFieldSize(" + max + ")";
