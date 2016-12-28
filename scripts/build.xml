@@ -39,8 +39,8 @@
        to 3 and then 4. and using the jdk 1.4 and then 1.6.
   -->
 
-  <property name="jdbc.level" value="3" />
-  <property name="jvm.ver" value="1.4" />
+  <property name="jdbc.level" value="4" />
+  <property name="jvm.ver" value="1.7" />
   <property name="jdbc.prefix" value="jdbc${jdbc.level}" />
 
   <property name="src" value="src-${jdbc.prefix}" />
